@@ -54,13 +54,23 @@ const state = {
   receipt: receiptState
 }
 
+const stateWithoutLoading = {
+  ...state,
+  receipt: {
+    ...state.receipt,
+    isLoading: false
+  }
+};
+
 describe('Selectors', () => {
   it('must return the correct loading value', () => {
     expect(isAppLoading(state)).toEqual(true);
+    expect(isAppLoading(stateWithoutLoading)).toEqual(false);
   });
 
-  it('must return the correct loading value', () => {
-    expect(getReceiptItems(state)).toEqual([
+  it('must return a collection of order items', () => {
+    expect(getReceiptItems(state)).toEqual([]);
+    expect(getReceiptItems(stateWithoutLoading)).toEqual([
       {
         id: 'apple',
         name: 'Apple',
@@ -93,10 +103,12 @@ describe('Selectors', () => {
   });
 
   it('must return the sub total', () => {
-    expect(getSubTotal(state)).toEqual(4.5);
+    expect(getSubTotal(state)).toEqual(0);
+    expect(getSubTotal(stateWithoutLoading)).toEqual(4.5);
   });
 
   it('must return the total', () => {
-    expect(getTotal(state)).toEqual(4.87);
+    expect(getTotal(state)).toEqual(0);
+    expect(getTotal(stateWithoutLoading)).toEqual(4.87);
   });
 });

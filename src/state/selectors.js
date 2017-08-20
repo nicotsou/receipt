@@ -32,8 +32,11 @@ export const isAppLoading = createSelector(
 export const getReceiptItems = createSelector(
   receiptItemsSelector,
   fruitsByIdSelector,
-  (receiptItems, fruitsById) => {
+  isAppLoading,
+  (receiptItems, fruitsById, isAppLoading) => {
+    if (isAppLoading) return [];
     if (!receiptItems || receiptItems.length === 0) return [];
+    if (!fruitsById || fruitsById.length === 0) return [];
 
     return map(receiptItems, item => {
       return {
@@ -50,7 +53,9 @@ export const getReceiptItems = createSelector(
  */
 export const getSubTotal = createSelector(
   getReceiptItems,
-  items => {
+  isAppLoading,
+  (items, isAppLoading) => {
+    if (isAppLoading) return 0;
     if (!items || items.length === 0) return 0;
 
     // @TODO Move functionality to helpers
@@ -67,7 +72,9 @@ export const getSubTotal = createSelector(
  */
 export const getTotal = createSelector(
   getSubTotal,
-  (subTotal) => {
+  isAppLoading,
+  (subTotal, isAppLoading) => {
+    if (isAppLoading) return 0;
     // @TODO Move functionality to helpers
     return round(add(subTotal, multiply(subTotal, TAX)), 2);
   }
