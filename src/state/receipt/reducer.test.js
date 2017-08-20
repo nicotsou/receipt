@@ -25,7 +25,8 @@ describe('Receipt Reducer', () => {
     })).toEqual({
       ...initialState,
       isLoading: false,
-      data: receipt
+      orderId: receipt.orderId,
+      items: receipt.items
     });
   });
 

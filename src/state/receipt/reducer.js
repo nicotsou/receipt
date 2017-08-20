@@ -7,8 +7,10 @@ import * as types from './types';
 export const initialState = {
   // This must be true while receiving receipt data
   isLoading: true,
-  // The data of the receipt
-  data: []
+  // The items of the order
+  items: [],
+  // The id of the order
+  orderId: ''
 };
 
 /**
@@ -24,7 +26,8 @@ export default function reducer(state = initialState, action) {
     case types.ACYNC_FETCH_RECEIPT_DATA_SUCCESS:
       return {
         ...state,
-        data: action.data,
+        items: action.data.items,
+        orderId: action.data.orderId,
         isLoading: false
       }
     case types.ACYNC_FETCH_RECEIPT_DATA_ERROR:

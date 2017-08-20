@@ -1,5 +1,4 @@
 import { normalizeFruits } from './normalizer.js';
-import forEach from 'lodash/forEach';
 
 import fruits from './fruits.json';
 

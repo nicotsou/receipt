@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Provider } from 'react-redux';
 
-import Receipt from './components/Receipt';
+import ReceiptContainer from './components/Receipt/ReceiptContainer';
 import store from './state/store';
 import { asyncFetchFruits } from './state/fruits/actions';
 import { asyncFetchReceiptData } from './state/receipt/actions';
@@ -23,7 +23,7 @@ class App extends Component {
       <div className="App">
         <div className="App-container">
           <Provider store={store}>
-            <Receipt />
+            <ReceiptContainer />
           </Provider>
         </div>
       </div>
