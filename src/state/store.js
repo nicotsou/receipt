@@ -1,7 +1,13 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, combineReducers, applyMiddleware, compose } from 'redux';
 import thunk from 'redux-thunk';
 
-import reducer from './reducer';
+import { default as fruitsReducer } from './fruits/reducer';
+import { default as receiptReducer } from './receipt/reducer';
+
+const reducer = combineReducers({
+  fruits: fruitsReducer,
+  receipt: receiptReducer
+});
 
 /**
  * Configure middlewares

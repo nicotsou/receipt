@@ -3,7 +3,8 @@ import { Provider } from 'react-redux';
 
 import Receipt from './components/Receipt';
 import store from './state/store';
-import { asyncFetchReceiptData, asyncFetchFruits } from './state/actions';
+import { asyncFetchFruits } from './state/fruits/actions';
+import { asyncFetchReceiptData } from './state/receipt/actions';
 
 import './App.css';
 

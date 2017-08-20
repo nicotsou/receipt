@@ -1,5 +1,5 @@
 import * as types from './types';
-import fruits from './fruits.json';
+
 import receipt from './receipt.json';
 
 /**
@@ -49,37 +49,5 @@ export const asyncFetchReceiptData = (orderId = '') => {
     setTimeout(() => {
       dispatch(asyncFetchReceiptDataSuccess(receipt));
     }, 2000);
-  };
-};
-
-export const asyncFetchFruitsRequest = () => {
-  return {
-    type: types.ACYNC_FETCH_FRUITS_REQUEST
-  };
-};
-export const asyncFetchFruitsSuccess = (data) => {
-  return {
-    type: types.ACYNC_FETCH_FRUITS_SUCCESS,
-    data
-  };
-};
-export const asyncFetchFruitsError = (error) => {
-  return {
-    type: types.ACYNC_FETCH_FRUITS_ERROR,
-    error
-  };
-};
-/**
- * This is a thunk fetch fruits
- */
-export const asyncFetchFruits = () => {
-  return (dispatch, getState) => {
-    // We dispatch the request event with the orderId
-    dispatch(asyncFetchFruitsRequest());
-
-    // We are importing data from json and we use a timeout to fake it
-    setTimeout(() => {
-      dispatch(asyncFetchFruitsSuccess(fruits));
-    }, 3000);
   };
 };
