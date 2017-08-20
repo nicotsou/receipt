@@ -1,0 +1,28 @@
+{
+  "fruits": [
+    {
+      "id": "apple",
+      "name": "Apple",
+      "price": 0.25
+    },
+    {
+      "id": "orange",
+      "name": "Orange",
+      "price": 0.30
+    },
+    {
+      "id": "bananna",
+      "name": "Bananna",
+      "price": 0.15
+    },
+    {
+      "id": "papaya",
+      "name": "Papaya",
+      "price": 0.50,
+      "discount": {
+        "amount": 1,
+        "minItems": 3
+      }
+    }
+  ]
+}

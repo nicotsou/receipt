@@ -3,7 +3,7 @@ import { Provider } from 'react-redux';
 
 import Receipt from './components/Receipt';
 import store from './state/store';
-import { asyncFetchReceiptData } from './state/actions';
+import { asyncFetchReceiptData, asyncFetchFruits } from './state/actions';
 
 import './App.css';
 
@@ -13,6 +13,7 @@ import './App.css';
 class App extends Component {
   componentDidMount() {
     // This is an action that forces the app to fetch receipt data
+    store.dispatch(asyncFetchFruits());
     store.dispatch(asyncFetchReceiptData());
   }
 

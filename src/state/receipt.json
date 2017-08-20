@@ -1,3 +1,21 @@
 {
-  
+  "id": "A123",
+  "items": [
+    {
+      "id": "apple",
+      "quantity": 2
+    }, 
+    {
+      "id": "orange",
+      "quantity": 3
+    }, 
+    {
+      "id": "banana",
+      "quantity": 4
+    }, 
+    {
+      "id": "papaya",
+      "quantity": 7
+    }
+  ]
 }
