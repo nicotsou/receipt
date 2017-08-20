@@ -77,9 +77,11 @@ Receipt.propTypes = {
     discount: shape({
       amount: number,
       minItems: number
-    }),
-    subTotalAmount: number
-  }))
+    })
+  })),
+  subTotalAmount: number,
+  taxAmount: number,
+  totalAmount: number
 };
 
 Receipt.getDefaultProps = {
