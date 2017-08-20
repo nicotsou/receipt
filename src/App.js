@@ -1,15 +1,28 @@
 import React, { Component } from 'react';
+import { Provider } from 'react-redux';
 
 import Receipt from './components/Receipt';
+import store from './state/store';
+import { asyncFetchReceiptData } from './state/actions';
 
 import './App.css';
 
+/**
+ * A simplified app that renders our stuff
+ */
 class App extends Component {
+  componentDidMount() {
+    // This is an action that forces the app to fetch receipt data
+    store.dispatch(asyncFetchReceiptData());
+  }
+
   render() {
     return (
       <div className="App">
         <div className="App-container">
-          <Receipt />
+          <Provider store={store}>
+            <Receipt />
+          </Provider>
         </div>
       </div>
     );
