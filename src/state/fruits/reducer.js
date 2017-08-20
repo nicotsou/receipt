@@ -1,5 +1,5 @@
 /**
- * Receipt Reducer
+ * Reducer
  */
 export const initialState = {};
 
