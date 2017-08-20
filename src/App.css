@@ -2,6 +2,8 @@
 body {
   background: whitesmoke;
   color: rgb(11, 11, 11);
+  font-family: 'VT323', monospace;
+  font-size: 1.6em;
 }
 
 /* A basic container for the main application */
