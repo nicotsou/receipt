@@ -2,6 +2,8 @@ import React from 'react';
 import { bool, arrayOf, number, shape, string } from 'prop-types';
 import map from 'lodash/map';
 
+import './Receipt.css';
+
 const renderLoading = () => {
   return <p>Loading Order...</p>;
 }
@@ -9,15 +11,15 @@ const renderLoading = () => {
 const renderOrderList = (props) => {
   const items = map(props.items, item => {
     return (
-      <li key={item.id}>
-        <div>{item.quantity}x {item.name}</div>
-        <div>{item.price}</div>
+      <li className="Receipt-list-item" key={item.id}>
+        <div className="Receipt-list-title">{item.quantity}x {item.name}</div>
+        <div className="Receipt-list-price">${item.price}</div>
       </li>
     );
   });
 
   return (
-    <ul>
+    <ul className="Receipt-list">
       {items}
     </ul>
   );
@@ -28,25 +30,23 @@ const renderOrder = (props) => {
   return (
     <div>
       <p>Your order with #{props.orderId} contains the following items:</p>
-      
-      <ul>
-        {renderOrderList(props)}
+      {renderOrderList(props)}
+      <ul className="Receipt-list">
+        <li className="Receipt-list-item">
+          <span className="Receipt-list-title">Sub Total: </span>
+          <span className="Receipt-list-price">$ {props.subTotalAmount}</span>
+        </li>
+        <li className="Receipt-list-item">
+          <span className="Receipt-list-title">Tax Amount: </span>
+          <span className="Receipt-list-price">$ {props.taxAmount}</span>
+        </li>
+        <li className="Receipt-list-item">
+          <span className="Receipt-list-title">Total: </span>
+          <span className="Receipt-list-price">$ {props.totalAmount}</span>
+        </li>
       </ul>
 
-      <ul>
-        <li>
-          <span>Sub Total: </span>
-          <span>{props.subTotalAmount}</span>
-        </li>
-        <li>
-          <span>Tax Amount: </span>
-          <span>{props.taxAmount}</span>
-        </li>
-        <li>
-          <span>Total: </span>
-          <span>{props.totalAmount}</span>
-        </li>
-      </ul>
+      <div className="Receipt-footer">^_^</div>
     </div>
   );
 }

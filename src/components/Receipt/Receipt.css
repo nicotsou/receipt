@@ -1,0 +1,22 @@
+.Receipt-list {
+  list-style: none;
+  padding: 0;
+}
+
+.Receipt-list-item {
+  padding: 0;
+  display: flex;
+}
+
+.Receipt-list-title {
+  width: 70%;
+}
+
+.Receipt-list-price {
+  text-align: right;
+  width: 30%;
+}
+
+.Receipt-footer {
+  text-align: center;
+}
