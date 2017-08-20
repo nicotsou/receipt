@@ -45,6 +45,6 @@ export const asyncFetchFruits = () => {
     // We are importing data from json and we use a timeout to fake it
     setTimeout(() => {
       dispatch(asyncFetchFruitsSuccess(fruits));
-    }, 3000);
+    }, 1000);
   };
 };

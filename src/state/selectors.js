@@ -70,6 +70,20 @@ export const getSubTotal = createSelector(
  * Get if we should display the receipt or not
  * Checks all loading variables and returns a boolean
  */
+export const getTax = createSelector(
+  getSubTotal,
+  isAppLoading,
+  (subTotal, isAppLoading) => {
+    if (isAppLoading) return 0;
+    // @TODO Move functionality to helpers
+    return round(multiply(subTotal, TAX), 2);
+  }
+);
+
+/**
+ * Get if we should display the receipt or not
+ * Checks all loading variables and returns a boolean
+ */
 export const getTotal = createSelector(
   getSubTotal,
   isAppLoading,

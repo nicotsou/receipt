@@ -2,6 +2,7 @@ import {
   isAppLoading,
   getReceiptItems,
   getSubTotal,
+  getTax,
   getTotal
 } from './selectors';
 
@@ -107,6 +108,11 @@ describe('Selectors', () => {
     expect(getSubTotal(stateWithoutLoading)).toEqual(4.5);
   });
 
+  it('must return the total', () => {
+    expect(getTax(state)).toEqual(0);
+    expect(getTax(stateWithoutLoading)).toEqual(0.37);
+  });
+  
   it('must return the total', () => {
     expect(getTotal(state)).toEqual(0);
     expect(getTotal(stateWithoutLoading)).toEqual(4.87);

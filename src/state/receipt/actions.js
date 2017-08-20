@@ -48,6 +48,6 @@ export const asyncFetchReceiptData = (orderId = '') => {
     // We are importing data from json and we use a timeout to fake it
     setTimeout(() => {
       dispatch(asyncFetchReceiptDataSuccess(receipt));
-    }, 2000);
+    }, 1000);
   };
 };

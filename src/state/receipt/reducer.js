@@ -27,7 +27,7 @@ export default function reducer(state = initialState, action) {
       return {
         ...state,
         items: action.data.items,
-        orderId: action.data.orderId,
+        orderId: action.data.id,
         isLoading: false
       }
     case types.ACYNC_FETCH_RECEIPT_DATA_ERROR:

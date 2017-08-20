@@ -1,44 +1,87 @@
 import React from 'react';
+import { bool, arrayOf, number, shape, string } from 'prop-types';
+import map from 'lodash/map';
 
-export default function Receipt(props) {
+const renderLoading = () => {
+  return <p>Loading Order...</p>;
+}
+
+const renderOrderList = (props) => {
+  const items = map(props.items, item => {
+    return (
+      <li key={item.id}>
+        <div>{item.quantity}x {item.name}</div>
+        <div>{item.price}</div>
+      </li>
+    );
+  });
+
   return (
-    <section>
-      <h1>Your Order</h1>
-      <p>You have ordered the following items:</p>
+    <ul>
+      {items}
+    </ul>
+  );
+}
+
+
+const renderOrder = (props) => {
+  return (
+    <div>
+      <p>Your order with #{props.orderId} contains the following items:</p>
       
       <ul>
-        <li>
-          <div>Banana</div>
-          <div>2.00</div>
-        </li>
-        <li>
-          <div>Tomato</div>
-          <div>1.00</div>
-        </li>
-        <li>
-          <div>Papaya</div>
-          <div>3.40</div>
-        </li>
+        {renderOrderList(props)}
       </ul>
 
       <ul>
         <li>
           <span>Sub Total: </span>
-          <span>6.40</span>
-        </li>
-        <li>
-          <span>Discount: </span>
-          <span>-0.00</span>
+          <span>{props.subTotalAmount}</span>
         </li>
         <li>
           <span>Tax Amount: </span>
-          <span>1.40</span>
+          <span>{props.taxAmount}</span>
         </li>
         <li>
           <span>Total: </span>
-          <span>7.80</span>
+          <span>{props.totalAmount}</span>
         </li>
       </ul>
+    </div>
+  );
+}
+
+export default function Receipt(props) {
+  return (
+    <section>
+      <h1>Your Order</h1>
+      {props.isLoading ? renderLoading(props) : renderOrder(props)}
     </section>
   );
 }
+
+Receipt.propTypes = {
+  /**
+   * We should display a loading indicator while the receipt is loading
+   * @TODO Must go to an parent component, receipt should be clean
+   */
+  isLoading: bool,
+  /**
+   * A collection of order items to display
+   */
+  items: arrayOf(shape({
+    id: string,
+    name: string,
+    price: number,
+    quantity: number,
+    discount: shape({
+      amount: number,
+      minItems: number
+    }),
+    subTotalAmount: number
+  }))
+};
+
+Receipt.getDefaultProps = {
+  isLoading: true
+};
