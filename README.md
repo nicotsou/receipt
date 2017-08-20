@@ -1,0 +1,2 @@
+# receipt
+React/Redux demo
